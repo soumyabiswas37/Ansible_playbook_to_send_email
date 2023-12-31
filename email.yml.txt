@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  vars_files:
+    - email_vars.yml
+  tasks:
+    - name: "Send email to recipients"
+      community.general.mail:
+        host: smtp.gmail.com
+        port: 587
+        username: "{{ username }}"
+        password: "{{ password }}"
+        to: "{{ to }}"
+        subject: "Ansible test email"
+        body: "This is a test email from Ansible! Thanks in Advance and Happy new Year"
+      delegate_to: localhost
